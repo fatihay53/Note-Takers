@@ -4,7 +4,7 @@ const app = express();
 const fs = require('fs')
 // const inquirer = require ('requirer')
 
-const PORT = 1111; // process.env.PORT ?
+const PORT = process.env.PORT || 8080
 
 // will share any static html files with the browser
 app.use(express.static('public'));
