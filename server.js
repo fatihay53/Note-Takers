@@ -12,23 +12,6 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// const dbFile = './app/db.json';
-
-// let noteList = [{id: "0000-0000-0000-0000", title: 'note1', text: 'note1 text'}];
-
-// Endpoints =================================================
-
-// you will need to create 3 endpoints here, and it should work magically :)
-// note: for app.post: newNote.id = uuid.v4() // use a random unique id.
-// ... code away ...
-
-
-// const saveFile = 'db/db.json' // save file, it's a hidden file
-
-// let dbFile = fs.existsSync(saveFile) ?
-//     JSON.parse( fs.readFileSync(saveFile) ) : []
-
-
 
 let counter = 1
 app.post('/api/notes', function (req, res) {
@@ -36,26 +19,14 @@ app.post('/api/notes', function (req, res) {
     let dbFile = JSON.parse(fs.readFileSync('db/db.json'))
     console.log(dbFile.length)
 
-
-
     if (dbFile.length > 0) {
 
         counter = (parseInt(dbFile[dbFile.length - 1].id) + 1)
-        console.log("hiiiiiiiiiiiiii")
+
     }
     else {
         counter = 1
     }
-
-    // dbFile ? counter = parseInt(dbFile[dbFile.length - 1].id) + 1 : 1
-
-    console.log(dbFile)
-    // let x = req.body
-    // x.title 
-    // x.id 
-    // x.name
-    console.log(req.body.text)
-
 
     dbFile.push({ id: `${counter}`, title: `${req.body.title}`, text: `${req.body.text}` })
 
