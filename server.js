@@ -34,7 +34,7 @@ app.post('/api/notes', function (req, res) {
     fs.writeFileSync('db/db.json', JSON.stringify(dbFile))
 
     counter++
-    req.location.reload()
+    // req.location.reload()
 })
 
 app.get('/api/notes', function (req, res) {
@@ -46,6 +46,8 @@ app.get('/api/notes', function (req, res) {
     }
 
 })
+
+
 
 
 app.delete('/api/notes/:id', (req, res) => {
